@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Vector3 playerPosition {get; set;} 
+    bool onPlanet{get; set;} = true;
     void Start()
     {
-        
+        playerPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
+    void OnTriggerEnter2D (Collision2D touchPlanet){
+        
+
+    }
+
+    // public  Vector3 getPosition(){
+    //     return transform.position;
+    // }
+
+    
 }
