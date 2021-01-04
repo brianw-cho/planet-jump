@@ -6,16 +6,23 @@ public class Planet : MonoBehaviour
 {
     public float rotationAdder;
     Vector3 planetPosition {get; set;}
+    Vector3 size;
     Collider2D touchPlayer;
     public Transform player;
     private Vector3 directionofPlayer;
     public float gravity;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
         planetPosition = transform.position;
         touchPlayer = GetComponent<Collider2D>();
+
+        float randNum = Random.Range(3f,6f);
+        size = new Vector3(randNum, randNum, 1f);
+        transform.localScale = size;
     }
 
     // Update is called once per frame
