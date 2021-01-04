@@ -38,8 +38,10 @@ public class Planet : MonoBehaviour
 
     private void OnTriggerStay2D (Collider2D touchPlayer)
     {
-        print("collision!");
-        player.GetComponent<Rigidbody2D>().AddForce(directionofPlayer * gravity);
+        if (!gameObject.GetComponentInChildren<PlanetChild>().isChild)
+        {
+            player.GetComponent<Rigidbody2D>().AddForce(directionofPlayer * gravity);
+        }
     }
 
     void rotation(){
