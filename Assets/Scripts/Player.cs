@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     Vector3 playerPosition {get; set;} 
     bool onPlanet{get; set;} = true;
+
     void Start()
     {
         playerPosition = transform.position;
@@ -14,11 +15,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    void OnTriggerEnter2D (Collision2D touchPlanet){
-        
 
     }
 
