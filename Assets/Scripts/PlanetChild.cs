@@ -11,14 +11,14 @@ public class PlanetChild : MonoBehaviour
 
     void Awake()
     {
-        player = gameObject.GetComponentInParent<Planet>().player;
-        planet = gameObject.transform.parent;
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = gameObject.GetComponentInParent<Planet>().player;
+        planet = gameObject.transform.parent;
     }
 
     // Update is called once per frame

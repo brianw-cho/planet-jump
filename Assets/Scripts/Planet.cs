@@ -15,13 +15,14 @@ public class Planet : MonoBehaviour
     
     void Awake()
     {
-        player = Player.s_Singleton.gameObject.transform;
+        
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
+        player = Player.s_Singleton.gameObject.transform;
         planetPosition = transform.position;
         touchPlayer = GetComponent<Collider2D>();
 
