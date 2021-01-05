@@ -33,17 +33,17 @@ public class Planet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rotation();
 
-        var pos = transform.position;
-        transform.position = new Vector3(pos.x, pos.y-0.01f, pos.z);
     }
 
     private void FixedUpdate()
     {
         directionofPlayer = (transform.position - player.position).normalized;
 
+        rotation();
 
+        var pos = transform.position;
+        transform.position = new Vector3(pos.x, pos.y - 0.01f, pos.z);
     }
 
     private void OnTriggerStay2D (Collider2D touchPlayer)
