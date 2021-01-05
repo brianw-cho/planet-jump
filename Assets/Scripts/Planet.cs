@@ -11,7 +11,7 @@ public class Planet : MonoBehaviour
     public Transform player;
     private Vector3 directionofPlayer;
     public float gravity;
-
+    bool outOfBounds;
     
     void Awake()
     {
@@ -22,10 +22,11 @@ public class Planet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         planetPosition = transform.position;
         touchPlayer = GetComponent<Collider2D>();
 
-        float randNum = Random.Range(3f,6f);
+        float randNum = Random.Range(1f,3f);
         size = new Vector3(randNum, randNum, 1f);
         transform.localScale = size;
     }
@@ -33,7 +34,9 @@ public class Planet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Mathf.Abs(transform.position.y) > 13.07){
+            Destroy(gameObject);
+        }
     }
 
     private void FixedUpdate()

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject[] prefabs;   
+    public GameObject[] prefabs;
+    float delay = 0f;   
     void Start()
     {
         StartCoroutine (PlanetGenerator());
@@ -12,10 +13,15 @@ public class Spawner : MonoBehaviour
 
     IEnumerator PlanetGenerator()
     {
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(delay);
 
         var planetPosition = transform;
         Instantiate(prefabs[0]);
+
+        if (delay == 0f){
+            delay+=10;
+        }
+        StartCoroutine(PlanetGenerator());
     }
     // Update is called once per frame
     void Update()
