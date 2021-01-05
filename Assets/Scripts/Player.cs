@@ -21,6 +21,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    void FixedUpdate(){
         var pos = transform.position;
         transform.position = new Vector3(pos.x, pos.y - 0.01f, pos.z);
     }
