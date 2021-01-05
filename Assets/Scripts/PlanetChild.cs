@@ -30,6 +30,7 @@ public class PlanetChild : MonoBehaviour
     private void OnTriggerEnter2D (Collider2D touchplayer)
     {
         isChild = true;
+        player.GetComponent<Player>().onPlanet = true;
         player.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
         player.transform.SetParent(planet);
     }
@@ -42,6 +43,7 @@ public class PlanetChild : MonoBehaviour
     private void OnTriggerExit2D (Collider2D touchplayer)
     {
         isChild = false;
+        player.GetComponent<Player>().onPlanet = false;
         player.transform.SetParent(null);
     }
 }
