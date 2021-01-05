@@ -21,7 +21,7 @@ public class SwipeAcceleration : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void fixedUpdate()
     {
         float swipeStartTime = 0;
         bool doneSwipe = true;
