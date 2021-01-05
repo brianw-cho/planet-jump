@@ -23,23 +23,37 @@ public class SwipeAcceleration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float swipeStartTime = 0;
+        bool doneSwipe = true;
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
+
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-                    firstPosition = touch.position;
+                    if (doneSwipe){
+                        firstPosition = touch.position;
+                        swipeStartTime = Time.time;
+                        doneSwipe = false;
+                    }
                     break;
 
                 case TouchPhase.Moved:
-                    swiping = true;
+                    if (Time.time - swipeStartTime < 0.001){
+                        swiping = true;
+                    } else {
+                        lastPosition = touch.position; 
+                        swiping = false;
+                        eventsent = false;
+                    }
                     break;
 
                 case TouchPhase.Ended:
+                    doneSwipe = true;
                     if (swiping)
                     {
-                        lastPosition = touch.position;
+                        lastPosition = touch.position; 
                         swiping = false;
                         eventsent = false;
                     }

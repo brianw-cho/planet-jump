@@ -225,4 +225,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationAdder: 10
   player: {fileID: 0}
-  gravity: 9.8
+  gravity: 50
