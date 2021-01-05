@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
         Instantiate(prefabs[0]);
 
         if (delay == 0f){
-            delay+=10;
+            delay+=20;
         }
         StartCoroutine(PlanetGenerator());
     }

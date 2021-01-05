@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "57534a5932383498",
+    "m_SelectedDeviceId": "3342574b55483098",
     "m_SelectedPackage": {
-        "deviceId": "57534a5932383498",
+        "deviceId": "3342574b55483098",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 21291,
+        "processId": 17301,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -18,6 +18,36 @@
             "deviceId": "3342574b55483098",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 31256,
+            "exited": false
+        },
+        {
+            "deviceId": "3342574b55483098",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 6234,
+            "exited": true
+        },
+        {
+            "deviceId": "3342574b55483098",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 17966,
+            "exited": false
+        },
+        {
+            "deviceId": "3342574b55483098",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 21421,
+            "exited": false
+        },
+        {
+            "deviceId": "3342574b55483098",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 25908,
+            "exited": true
+        },
+        {
+            "deviceId": "3342574b55483098",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 17301,
             "exited": false
         },
         {
@@ -43,18 +73,6 @@
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 25527,
             "exited": true
-        },
-        {
-            "deviceId": "57534a5932383498",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 13244,
-            "exited": false
-        },
-        {
-            "deviceId": "57534a5932383498",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 21291,
-            "exited": false
         },
         {
             "deviceId": "LMG710AWMe66bbb09",
