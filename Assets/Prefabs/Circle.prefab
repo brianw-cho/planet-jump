@@ -223,6 +223,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a281d130022381488c9ded81856eb9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationAdder: 10
+  rotationAdder: 25
   player: {fileID: 0}
-  gravity: 50
+  gravity: 9.8
