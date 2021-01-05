@@ -1,10 +1,10 @@
 {
-    "m_SelectedDeviceId": "3342574b55483098",
+    "m_SelectedDeviceId": "LMG710AWMe66bbb09",
     "m_SelectedPackage": {
-        "deviceId": "3342574b55483098",
+        "deviceId": "LMG710AWMe66bbb09",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 31256,
-        "exited": false
+        "processId": 5787,
+        "exited": true
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
@@ -13,12 +13,6 @@
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 28257,
             "exited": true
-        },
-        {
-            "deviceId": "3342574b55483098",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 31256,
-            "exited": false
         },
         {
             "deviceId": "57534a5932383498",
@@ -49,12 +43,6 @@
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 5787,
             "exited": true
-        },
-        {
-            "deviceId": "LMG710AWMe66bbb09",
-            "name": "com.unity3d.mobileremote",
-            "processId": 6844,
-            "exited": false
         }
     ],
     "m_Tags": {

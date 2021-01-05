@@ -9,12 +9,6 @@ public class PlanetChild : MonoBehaviour
     private Collider2D touchPlayer;
     public bool isChild { get; set; } = false;
 
-    void Awake()
-    {
-        player = gameObject.GetComponentInParent<Planet>().player;
-        planet = gameObject.transform.parent;
-    }
-
     // Start is called before the first frame update
     void Start()
     {

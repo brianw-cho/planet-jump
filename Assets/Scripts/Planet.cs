@@ -13,11 +13,6 @@ public class Planet : MonoBehaviour
     public float gravity;
 
     
-    void Awake()
-    {
-        player = Player.s_Singleton.gameObject.transform;
-    }
-
 
     // Start is called before the first frame update
     void Start()
