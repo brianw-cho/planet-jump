@@ -8,21 +8,24 @@ public class SwipeAcceleration : MonoBehaviour
     private bool swiping = false;
     private bool eventsent = true;
     private Vector2 firstPosition;
+    private Vector2 firstPosition_w;
     private Vector2 lastPosition;
+    private Vector2 tempPosition_w;
     private Vector2 tempPosition;
-    private Vector2 liveForce = Vector2.zero;
-    private Vector2 prevLiveForce = Vector2.zero;
+    private Vector2 transLastPos;
     private Vector2 force;
     public float scale;
 
     public GameObject[] prefabs;
     private GameObject dottedLine;
+    private Camera cam;
 
     private Rigidbody2D rb2D;
 
     // Start is called before the first frame update
     void Start()
     {
+        cam = Camera.main;
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         dottedLine = Instantiate(prefabs[0]);
         
@@ -39,13 +42,15 @@ public class SwipeAcceleration : MonoBehaviour
             {
                 case TouchPhase.Began:
                     firstPosition = touch.position;
+                    firstPosition_w = cam.ScreenToWorldPoint(firstPosition);
                     gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                     break;
 
                 case TouchPhase.Moved:
-                    tempPosition = touch.position;
-                    liveForce = CalculateForce(tempPosition, firstPosition);
                     swiping = true;
+                    tempPosition = touch.position;
+                    tempPosition_w = cam.ScreenToWorldPoint(tempPosition);
+                    transLastPos = translateVector(tempPosition_w);
                     break;
 
                 case TouchPhase.Ended:
@@ -61,7 +66,7 @@ public class SwipeAcceleration : MonoBehaviour
 
         if (swiping)
         {
-            dottedLine.GetComponent<DottedLine>().DrawDottedLine(gameObject.transform.position, liveForce* 0.01f);
+            dottedLine.GetComponent<DottedLine>().DrawDottedLine(gameObject.transform.position, transLastPos);
         }
         
 
@@ -73,14 +78,21 @@ public class SwipeAcceleration : MonoBehaviour
             {
                 rb2D.AddForce(force * scale);
                 force = Vector2.zero;
-                liveForce = Vector2.zero;
             }
             eventsent = true;
         }
+
+        print(transLastPos);
     }
 
     public Vector2 CalculateForce(Vector2 last, Vector2 first)
     {
         return (last - first) * -1;
+    }
+
+    public Vector2 translateVector(Vector2 endpoint)
+    {
+        Vector2 original = endpoint + (Vector2)gameObject.transform.position - firstPosition_w;
+        return (Vector2)gameObject.transform.position - (original - (Vector2)gameObject.transform.position);
     }
 }
