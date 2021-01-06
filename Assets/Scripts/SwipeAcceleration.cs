@@ -9,6 +9,9 @@ public class SwipeAcceleration : MonoBehaviour
     private bool eventsent = true;
     private Vector2 firstPosition;
     private Vector2 lastPosition;
+    private Vector2 tempPosition;
+    private Vector2 liveForce;
+    private Vector2 force;
     public float scale;
 
     private Rigidbody2D rb2D;
@@ -34,6 +37,7 @@ public class SwipeAcceleration : MonoBehaviour
                     break;
 
                 case TouchPhase.Moved:
+                    tempPosition = touch.position;
                     swiping = true;
                     break;
 
@@ -48,9 +52,12 @@ public class SwipeAcceleration : MonoBehaviour
             }
         }
 
+        liveForce = CalculateForce(tempPosition, firstPosition);
+        print(liveForce);
+
         if (!eventsent)
         {
-            Vector2 force = CalculateForce();
+            force = CalculateForce(lastPosition, firstPosition);
 
             if (force.sqrMagnitude != 0)
             {
@@ -61,8 +68,8 @@ public class SwipeAcceleration : MonoBehaviour
         }
     }
 
-    public Vector2 CalculateForce()
+    public Vector2 CalculateForce(Vector2 last, Vector2 first)
     {
-        return lastPosition - firstPosition;
+        return (last - first) * -1;
     }
 }
