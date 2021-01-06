@@ -37,7 +37,8 @@ public class Planet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(transform.position.y) > 13.07){
+        Vector3 objScreenPos = Camera.main.WorldToScreenPoint (transform.position); 
+        if (objScreenPos.y < -500){
             Destroy(gameObject);
             Destroy(field);
         }
