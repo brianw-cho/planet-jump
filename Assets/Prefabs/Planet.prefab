@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 2584886406587441485}
   - component: {fileID: 2584886406587441484}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Planet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,3 +226,5 @@ MonoBehaviour:
   rotationAdder: 25
   player: {fileID: 0}
   gravity: 9.8
+  prefabs:
+  - {fileID: 1690909971937101183, guid: 84f2da4ac6273b14398e2f5a978c3c1d, type: 3}

@@ -15,11 +15,12 @@ public class Spawner : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        var planetPosition = transform;
-        Instantiate(prefabs[0]);
+        float xPos = Random.Range(-3f,3f);
+        Vector3 position = new Vector3(xPos, 0, 0);
+        Instantiate(prefabs[0], position, Quaternion.identity);
 
         if (delay == 0f){
-            delay+=20;
+            delay+=10;
         }
         StartCoroutine(PlanetGenerator());
     }
