@@ -38,6 +38,7 @@ public class SwipeAcceleration : MonoBehaviour
 
                 case TouchPhase.Moved:
                     tempPosition = touch.position;
+                    liveForce = CalculateForce(tempPosition, firstPosition);
                     swiping = true;
                     break;
 
@@ -52,9 +53,6 @@ public class SwipeAcceleration : MonoBehaviour
             }
         }
 
-        liveForce = CalculateForce(tempPosition, firstPosition);
-        print(liveForce);
-
         if (!eventsent)
         {
             force = CalculateForce(lastPosition, firstPosition);
@@ -62,7 +60,8 @@ public class SwipeAcceleration : MonoBehaviour
             if (force.sqrMagnitude != 0)
             {
                 rb2D.AddForce(force * scale);
-                force = new Vector2(0f, 0f);
+                force = Vector2.zero;
+                liveForce = Vector2.zero;
             }
             eventsent = true;
         }
