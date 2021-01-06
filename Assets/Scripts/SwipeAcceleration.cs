@@ -10,9 +10,13 @@ public class SwipeAcceleration : MonoBehaviour
     private Vector2 firstPosition;
     private Vector2 lastPosition;
     private Vector2 tempPosition;
-    private Vector2 liveForce;
+    private Vector2 liveForce = Vector2.zero;
+    private Vector2 prevLiveForce = Vector2.zero;
     private Vector2 force;
     public float scale;
+
+    public GameObject[] prefabs;
+    private GameObject dottedLine;
 
     private Rigidbody2D rb2D;
 
@@ -20,6 +24,7 @@ public class SwipeAcceleration : MonoBehaviour
     void Start()
     {
         rb2D = gameObject.GetComponent<Rigidbody2D>();
+        dottedLine = Instantiate(prefabs[0]);
         
     }
 
@@ -34,6 +39,7 @@ public class SwipeAcceleration : MonoBehaviour
             {
                 case TouchPhase.Began:
                     firstPosition = touch.position;
+                    gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                     break;
 
                 case TouchPhase.Moved:
@@ -52,6 +58,12 @@ public class SwipeAcceleration : MonoBehaviour
                     break;
             }
         }
+
+        if (swiping)
+        {
+            dottedLine.GetComponent<DottedLine>().DrawDottedLine(gameObject.transform.position, liveForce* 0.01f);
+        }
+        
 
         if (!eventsent)
         {

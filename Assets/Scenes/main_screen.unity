@@ -800,6 +800,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 0.5
+  prefabs:
+  - {fileID: 9095924625013717308, guid: cca7ccba4938ae4428dbbf63c5210ee7, type: 3}
 --- !u!50 &2096663241
 Rigidbody2D:
   serializedVersion: 4
