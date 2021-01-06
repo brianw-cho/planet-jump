@@ -37,7 +37,8 @@ public class Planet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(transform.position.y) > 13.07){
+        Vector3 objScreenPos = Camera.main.WorldToScreenPoint (transform.position); 
+        if (objScreenPos.y < -500){
             Destroy(gameObject);
             Destroy(field);
         }
@@ -54,9 +55,9 @@ public class Planet : MonoBehaviour
         field.transform.position = transform.position;
     }
 
-    private void OnTriggerStay2D (Collider2D touchPlayer)
+    private void OnTriggerStay2D (Collider2D touchplayer)
     {
-        if (touchPlayer.gameObject.name == "Square"){
+        if (touchplayer.gameObject.name == "Player"){
             if (!gameObject.GetComponentInChildren<PlanetChild>().isChild)
             {
                 player.GetComponent<Rigidbody2D>().AddForce(directionofPlayer * gravity);

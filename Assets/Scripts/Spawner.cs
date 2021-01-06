@@ -16,7 +16,8 @@ public class Spawner : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         float xPos = Random.Range(-3f,3f);
-        Vector3 position = new Vector3(xPos, 0, 0);
+        Vector3 position = Camera.main.ScreenToWorldPoint(new Vector3 (0, Screen.height + 200, 0));
+        position.x = xPos;
         Instantiate(prefabs[0], position, Quaternion.identity);
 
         if (delay == 0f){
