@@ -19,7 +19,7 @@ public class Spawner : MonoBehaviour
         Vector3 position = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height + 200, 0));
         position.x = xPos;
         position.z = 0;
-       // Vector3 position = new Vector3(xPos,0,0);
+        // Vector3 position = new Vector3(xPos,0,0);
         Instantiate(prefabs[0], position, Quaternion.identity);
 
         if (delay == 0f)
