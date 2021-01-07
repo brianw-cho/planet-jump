@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerPosition = transform.position;
+        fuel = maxFuel;
     }
 
     // Update is called once per frame
