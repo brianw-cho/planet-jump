@@ -81,8 +81,6 @@ public class SwipeAcceleration : MonoBehaviour
             }
             eventsent = true;
         }
-
-        print(transLastPos);
     }
 
     public Vector2 CalculateForce(Vector2 last, Vector2 first)
