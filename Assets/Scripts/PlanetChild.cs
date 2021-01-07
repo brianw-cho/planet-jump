@@ -11,7 +11,7 @@ public class PlanetChild : MonoBehaviour
 
     void Awake()
     {
-        
+
     }
 
     // Start is called before the first frame update
@@ -24,23 +24,26 @@ public class PlanetChild : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private void OnTriggerEnter2D (Collider2D touchplayer)
+    private void OnTriggerEnter2D(Collider2D touchplayer)
     {
-         if (touchplayer.gameObject.name == "Player"){
-        isChild = true;
-        player.GetComponent<Player>().onPlanet = true;
-        player.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
-        player.transform.SetParent(planet);
-         }
+        if (touchplayer.gameObject.name == "Player")
+        {
+            isChild = true;
+            player.GetComponent<Player>().onPlanet = true;
+            player.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+            player.transform.SetParent(planet);
+        }
     }
-    private void OnTriggerExit2D (Collider2D touchplayer)
+    private void OnTriggerExit2D(Collider2D touchplayer)
     {
-         if (touchplayer.gameObject.name == "Player"){
-        isChild = false;
-        player.GetComponent<Player>().onPlanet = false;
-        player.transform.SetParent(null);}
+        if (touchplayer.gameObject.name == "Player")
+        {
+            isChild = false;
+            player.GetComponent<Player>().onPlanet = false;
+            player.transform.SetParent(null);
+        }
     }
 }
