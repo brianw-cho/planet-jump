@@ -68,11 +68,11 @@ public class SwipeAcceleration : MonoBehaviour
         {
             dottedLine.GetComponent<DottedLine>().DrawDottedLine(gameObject.transform.position, transLastPos);
         }
-        
 
         if (!eventsent)
         {
             force = CalculateForce(lastPosition, firstPosition);
+            gameObject.GetComponent<Player>().DecreaseFuel(force.sqrMagnitude);
 
             if (force.sqrMagnitude != 0)
             {
