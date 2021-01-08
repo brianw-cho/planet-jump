@@ -62,6 +62,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   planet: {fileID: 2584886406587441487}
+  refueled: 0
+  fuelScale: 1.5
 --- !u!1 &2584886406517455086
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,4 +231,3 @@ MonoBehaviour:
   prefabs:
   - {fileID: 1690909971937101183, guid: 84f2da4ac6273b14398e2f5a978c3c1d, type: 3}
   - {fileID: 1155158660584366662, guid: f142cc3315bff554dbfab0af3f6fbd72, type: 3}
-  asteroids: {fileID: 0}

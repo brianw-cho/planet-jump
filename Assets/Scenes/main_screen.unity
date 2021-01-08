@@ -391,7 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fuel: 100
   maxFuel: 100
-  fuelScale: 0.000005
+  fuelScale: 0.000008
   fuelBar: {fileID: 1745173292}
 --- !u!114 &204705504
 MonoBehaviour:

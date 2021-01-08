@@ -8,6 +8,8 @@ public class PlanetChild : MonoBehaviour
     public Transform planet;
     private Collider2D touchPlayer;
     public bool isChild { get; set; } = false;
+    public bool refueled = false;
+    public float fuelScale;
 
     void Awake()
     {
@@ -35,6 +37,11 @@ public class PlanetChild : MonoBehaviour
             player.GetComponent<Player>().onPlanet = true;
             player.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
             player.transform.SetParent(planet);
+            if (!refueled)
+            {
+                player.GetComponent<Player>().fuel += (int)(planet.GetComponent<Planet>().Field.transform.localScale.x * fuelScale);
+                refueled = true;
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D touchplayer)
