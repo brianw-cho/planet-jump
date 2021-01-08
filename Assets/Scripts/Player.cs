@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     public bool onPlanet{get; set;} = false;
     static public Player s_Singleton;
     public FuelBar fuelBar;
-
     void Awake()
     {
         s_Singleton = this;
@@ -39,14 +38,29 @@ public class Player : MonoBehaviour
             var pos = transform.position;
             transform.position = new Vector3(pos.x, pos.y - 0.01f, pos.z);
         }
+
+        if (Camera.main.WorldToScreenPoint(transform.position).x == Screen.width  || 
+        Camera.main.WorldToScreenPoint(transform.position).x == 0 ||
+        Camera.main.WorldToScreenPoint(transform.position).y == Screen.height ||
+        Camera.main.WorldToScreenPoint(transform.position).y == 0) {
+            lose();
+        }
     }
 
+     private void OnTriggerEnter2D (Collider2D touchAsteroids){
+         if (touchAsteroids.gameObject.name == "Asteroids(Clone)"){
+            lose();
+         }
+     }
     public void DecreaseFuel(int amount)
     {
         fuel = fuel - (int)(amount * fuelScale);
         fuelBar.SetFuel(fuel);
     }
 
+    void lose(){
+        print("You lose");
+    }
     // public  Vector3 getPosition(){
     //     return transform.position;
     // }

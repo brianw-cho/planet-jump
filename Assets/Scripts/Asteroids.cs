@@ -31,7 +31,6 @@ public class Asteroids
         
         float MaxlenOfAsteroid = spawnRange[1] - spawnRange[0];
         lenOfAsteroid = Random.Range(1, MaxlenOfAsteroid) * 2;
-
     }
 
     public float Length{
