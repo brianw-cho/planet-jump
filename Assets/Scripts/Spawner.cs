@@ -8,25 +8,23 @@ public class Spawner : MonoBehaviour
     float delay = 0f;
     void Start()
     {
-        StartCoroutine(PlanetGenerator());
+        StartCoroutine(ObstacleGenerator());
     }
-
-    IEnumerator PlanetGenerator()
+    IEnumerator ObstacleGenerator()
     {
         yield return new WaitForSeconds(delay);
 
         float xPos = Random.Range(-3f, 3f);
-        Vector3 position = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height + 200, 0));
+        Vector3 position = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height + 400, 0));
         position.x = xPos;
         position.z = 0;
-        // Vector3 position = new Vector3(xPos,0,0);
         Instantiate(prefabs[0], position, Quaternion.identity);
 
         if (delay == 0f)
         {
             delay += 10;
         }
-        StartCoroutine(PlanetGenerator());
+        StartCoroutine(ObstacleGenerator());
     }
     // Update is called once per frame
     void Update()

@@ -12,7 +12,16 @@ public class Planet : MonoBehaviour
     private Vector3 directionofPlayer;
     public float gravity;
     GameObject field;
+    GameObject asteroidGObj;
     public GameObject[] prefabs;
+
+    public Asteroids asteroids;
+    
+
+    public GameObject Field{
+        get{return field;}
+        set{field = value;}
+    }
     
     void Awake()
     {
@@ -32,6 +41,12 @@ public class Planet : MonoBehaviour
 
         field = Instantiate(prefabs[0], transform.position, transform.rotation );
         field.transform.localScale = new Vector3(transform.localScale.x*(1.35F/0.5F), transform.localScale.y*(1.35F/0.5F), transform.localScale.z*(1.35F/0.5F));
+
+        Planet planet = gameObject.GetComponent<Planet>();
+        asteroids = new Asteroids(planet);
+        Vector3 location = new Vector3(asteroids.Spawn, transform.position.y, transform.position.z);
+        asteroidGObj = Instantiate(prefabs[1],location, transform.rotation);
+        asteroidGObj.transform.localScale = new Vector3(asteroids.Length, asteroidGObj.transform.localScale.y, asteroidGObj.transform.localScale.z) ;
     }
 
     // Update is called once per frame
@@ -53,6 +68,9 @@ public class Planet : MonoBehaviour
         var pos = transform.position;
         transform.position = new Vector3(pos.x, pos.y - 0.01f, pos.z);
         field.transform.position = transform.position;
+
+        var asPos = asteroidGObj.transform.position;
+        asteroidGObj.transform.position = new Vector3(asPos.x, asPos.y - 0.01f, asPos.z);
     }
 
     private void OnTriggerStay2D (Collider2D touchplayer)

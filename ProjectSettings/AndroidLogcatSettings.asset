@@ -1,10 +1,10 @@
 {
-    "m_SelectedDeviceId": "3342574b55483098",
+    "m_SelectedDeviceId": "57534a5932383498",
     "m_SelectedPackage": {
-        "deviceId": "3342574b55483098",
+        "deviceId": "57534a5932383498",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 25171,
-        "exited": false
+        "processId": 25492,
+        "exited": true
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
@@ -84,6 +84,12 @@
             "deviceId": "57534a5932383498",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 25527,
+            "exited": true
+        },
+        {
+            "deviceId": "57534a5932383498",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 25492,
             "exited": true
         },
         {
