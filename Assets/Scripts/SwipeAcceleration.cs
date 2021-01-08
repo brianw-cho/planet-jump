@@ -72,7 +72,7 @@ public class SwipeAcceleration : MonoBehaviour
         if (!eventsent)
         {
             force = CalculateForce(lastPosition, firstPosition);
-            gameObject.GetComponent<Player>().DecreaseFuel(force.sqrMagnitude);
+            gameObject.GetComponent<Player>().DecreaseFuel((int)force.sqrMagnitude);
 
             if (force.sqrMagnitude != 0)
             {

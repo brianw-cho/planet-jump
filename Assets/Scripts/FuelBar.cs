@@ -7,7 +7,7 @@ public class FuelBar : MonoBehaviour
 {
     public Slider fuelBar;
     private GameObject player;
-    private float health;
+    private int curfuel;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,10 +15,23 @@ public class FuelBar : MonoBehaviour
         player = Player.s_Singleton.gameObject;
         fuelBar.maxValue = player.GetComponent<Player>().maxFuel;
         fuelBar.value = player.GetComponent<Player>().fuel;
+        curfuel = (int)fuelBar.maxValue;
     }
 
-    public void SetFuel(float fuel)
+    private void FixedUpdate()
     {
-        fuelBar.value = fuel;
+        if (fuelBar.value > curfuel)
+        {
+            fuelBar.value = fuelBar.value - 1;
+        }
+        else if (fuelBar.value < curfuel)
+        {
+            fuelBar.value = fuelBar.value + 1;
+        }
+    }
+
+    public void SetFuel(int fuel)
+    {
+        curfuel = fuel;
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Vector3 playerPosition {get; set;}
-    public float fuel;
-    public float maxFuel;
+    public int fuel = 100;
+    public int maxFuel = 100;
     public float fuelScale;
     public bool onPlanet{get; set;} = false;
     static public Player s_Singleton;
@@ -37,9 +37,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void DecreaseFuel(float amount)
+    public void DecreaseFuel(int amount)
     {
-        fuel = fuel - (amount * fuelScale);
+        fuel = fuel - (int)(amount * fuelScale);
         fuelBar.SetFuel(fuel);
     }
 
