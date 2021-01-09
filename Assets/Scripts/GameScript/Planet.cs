@@ -16,6 +16,7 @@ public class Planet : MonoBehaviour
     public GameObject[] prefabs;
 
     public Asteroids asteroids;
+    public Sprite[] planetSprite;
     
 
     public GameObject Field{
@@ -26,6 +27,8 @@ public class Planet : MonoBehaviour
     void Awake()
     {
         player = Player.s_Singleton.gameObject.transform;
+        int planetSpriteRandomizer = Random.Range(0, planetSprite.Length);
+        GetComponent<SpriteRenderer>().sprite = planetSprite[planetSpriteRandomizer];
     }
 
 

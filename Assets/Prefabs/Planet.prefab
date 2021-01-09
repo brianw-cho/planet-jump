@@ -183,10 +183,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1743608283
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4dc75a220dfadec47be9a6b70272c152, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -194,7 +194,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &2584886406587441485
@@ -231,3 +231,13 @@ MonoBehaviour:
   prefabs:
   - {fileID: 1690909971937101183, guid: 84f2da4ac6273b14398e2f5a978c3c1d, type: 3}
   - {fileID: 1155158660584366662, guid: f142cc3315bff554dbfab0af3f6fbd72, type: 3}
+  planetSprite:
+  - {fileID: 21300000, guid: 7fd37ac138fced546a89a75d728d0710, type: 3}
+  - {fileID: 21300000, guid: 4dc75a220dfadec47be9a6b70272c152, type: 3}
+  - {fileID: 21300000, guid: a11c432b67c633f4dbd20598771446b0, type: 3}
+  - {fileID: 21300000, guid: 2ac0db94ff1d5c041bafd13526beb3c4, type: 3}
+  - {fileID: 21300000, guid: f61845ff0fcabb149af7e9f6d8b660ea, type: 3}
+  - {fileID: 21300000, guid: e649371ffe68bfa4c8a5f18c1e0186f3, type: 3}
+  - {fileID: 21300000, guid: 946c2d6c1621c1449b842ae06de460b2, type: 3}
+  - {fileID: 21300000, guid: ecf7b80712cebd042820b11f9a6f3049, type: 3}
+  - {fileID: 21300000, guid: 5c7b6fcdc51c1ec4eb1e4d66c3943700, type: 3}
