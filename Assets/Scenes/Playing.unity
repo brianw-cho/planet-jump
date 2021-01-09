@@ -493,7 +493,7 @@ MonoBehaviour:
   fuel: 100
   maxFuel: 100
   fuelScale: 0.00002
-  speed: 0.05
+  speed: 0.02
   onPlanet: 0
   fuelBar: {fileID: 1745173292}
   scorePrinter: {fileID: 514222170}
@@ -1181,6 +1181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 2584886406587441473, guid: 01bc49c5f95aa484992e96dcfc3cbd50, type: 3}
+  player: {fileID: 0}
 --- !u!4 &1591252628
 Transform:
   m_ObjectHideFlags: 0
