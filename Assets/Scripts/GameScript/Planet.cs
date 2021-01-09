@@ -64,8 +64,6 @@ public class Planet : MonoBehaviour
         }
 
         speed = player.GetComponent<Player>().speed;
-
-        print("Planet" + speed);
     }
 
     private void FixedUpdate()

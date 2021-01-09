@@ -45,8 +45,6 @@ public class Player : MonoBehaviour
         {
             speedInc = false;
         }
-
-        print("Player" + speed);
     }
 
     void FixedUpdate(){
