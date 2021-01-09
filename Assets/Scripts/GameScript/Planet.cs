@@ -5,6 +5,8 @@ using UnityEngine;
 public class Planet : MonoBehaviour
 {
     public float rotationAdder;
+    public float speed = 0.01f;
+    private bool speedInc = false;
     Vector3 planetPosition {get; set;}
     Vector3 size;
     CircleCollider2D touchPlayer;
@@ -60,6 +62,10 @@ public class Planet : MonoBehaviour
             Destroy(gameObject);
             Destroy(field);
         }
+
+        speed = player.GetComponent<Player>().speed;
+
+        print("Planet" + speed);
     }
 
     private void FixedUpdate()
@@ -69,11 +75,11 @@ public class Planet : MonoBehaviour
         rotation();
 
         var pos = transform.position;
-        transform.position = new Vector3(pos.x, pos.y - 0.01f, pos.z);
+        transform.position = new Vector3(pos.x, pos.y - speed, pos.z);
         field.transform.position = transform.position;
 
         var asPos = asteroidGObj.transform.position;
-        asteroidGObj.transform.position = new Vector3(asPos.x, asPos.y - 0.01f, asPos.z);
+        asteroidGObj.transform.position = new Vector3(asPos.x, asPos.y - speed, asPos.z);
     }
 
     private void OnTriggerStay2D (Collider2D touchplayer)
@@ -90,5 +96,10 @@ public class Planet : MonoBehaviour
     void rotation(){
         var pos = transform.rotation;
         transform.Rotate(new Vector3(pos.x, pos.y, pos.z + rotationAdder)*Time.deltaTime);
+    }
+
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
     }
 }

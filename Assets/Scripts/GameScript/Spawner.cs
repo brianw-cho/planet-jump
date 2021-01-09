@@ -6,9 +6,11 @@ public class Spawner : MonoBehaviour
 {
     public GameObject[] prefabs;
     float delay = 0f;
+    public Player player;
     void Start()
     {
         StartCoroutine(ObstacleGenerator());
+        player = Player.s_Singleton.gameObject.GetComponent<Player>();
     }
     IEnumerator ObstacleGenerator()
     {
@@ -18,7 +20,7 @@ public class Spawner : MonoBehaviour
         Vector3 position = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height + 400, 0));
         position.x = xPos;
         position.z = 0;
-        Instantiate(prefabs[0], position, Quaternion.identity);
+        Instantiate(prefabs[0], position, Quaternion.identity).GetComponent<Planet>().SetSpeed(player.speed);
 
         if (delay == 0f)
         {
@@ -29,6 +31,6 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }

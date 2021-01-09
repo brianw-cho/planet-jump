@@ -63,7 +63,7 @@ MonoBehaviour:
   player: {fileID: 0}
   planet: {fileID: 2584886406587441487}
   refueled: 0
-  fuelScale: 1.5
+  fuelScale: 1.3
 --- !u!1 &2584886406517455086
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAdder: 25
+  speed: 0.02
   player: {fileID: 0}
   gravity: 9.8
   prefabs:

@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    private int score = 0;
+    public int score = 0;
     Vector3 playerPosition {get; set;}
     public int fuel = 100;
     public int maxFuel = 100;
     public float fuelScale;
+    public float speed = 0.01f;
     public bool onPlanet = false;
+    private bool speedInc = false;
     static public Player s_Singleton;
     public FuelBar fuelBar;
     public Text scorePrinter;
@@ -33,13 +35,25 @@ public class Player : MonoBehaviour
         {
             fuel = maxFuel;
         }
+
+        if (score % 20 == 0 && score != 0 && !speedInc)
+        {
+            speed = speed * 1.5f;
+            speedInc = true;
+        }
+        else if (score % 20 != 0 && speedInc)
+        {
+            speedInc = false;
+        }
+
+        print("Player" + speed);
     }
 
     void FixedUpdate(){
         if (!onPlanet)
         {
             var pos = transform.position;
-            transform.position = new Vector3(pos.x, pos.y - 0.01f, pos.z);
+            transform.position = new Vector3(pos.x, pos.y - speed, pos.z);
         } 
 
         if (Camera.main.WorldToScreenPoint(transform.position).x == Screen.width  || 
