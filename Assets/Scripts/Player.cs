@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    private int score = 0;
     Vector3 playerPosition {get; set;}
     public int fuel = 100;
     public int maxFuel = 100;
     public float fuelScale;
-    public bool onPlanet{get; set;} = false;
+    public bool onPlanet = false;
     static public Player s_Singleton;
     public FuelBar fuelBar;
+    public Text scorePrinter;
     void Awake()
     {
         s_Singleton = this;
@@ -37,7 +40,7 @@ public class Player : MonoBehaviour
         {
             var pos = transform.position;
             transform.position = new Vector3(pos.x, pos.y - 0.01f, pos.z);
-        }
+        } 
 
         if (Camera.main.WorldToScreenPoint(transform.position).x == Screen.width  || 
         Camera.main.WorldToScreenPoint(transform.position).x == 0 ||
@@ -45,11 +48,15 @@ public class Player : MonoBehaviour
         Camera.main.WorldToScreenPoint(transform.position).y == 0) {
             lose();
         }
+        
+        scorePrinter.text = score.ToString();
     }
 
-     private void OnTriggerEnter2D (Collider2D touchAsteroids){
-         if (touchAsteroids.gameObject.name == "Asteroids(Clone)"){
+     private void OnTriggerEnter2D (Collider2D touchObj){
+         if (touchObj.gameObject.name == "Asteroids(Clone)"){
             lose();
+         } else if (touchObj.gameObject.name == "Planet(Clone)"){
+             score+=1;
          }
      }
     public void DecreaseFuel(int amount)
@@ -61,9 +68,6 @@ public class Player : MonoBehaviour
     void lose(){
         print("You lose");
     }
-    // public  Vector3 getPosition(){
-    //     return transform.position;
-    // }
 
     
 }
