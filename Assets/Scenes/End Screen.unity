@@ -444,7 +444,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 895359680}
-        m_TargetAssemblyTypeName: mainMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: menuSwapper, Assembly-CSharp
         m_MethodName: startGame
         m_Mode: 1
         m_Arguments:

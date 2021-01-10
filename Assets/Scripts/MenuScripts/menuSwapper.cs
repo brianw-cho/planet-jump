@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class mainMenu : MonoBehaviour
+public class menuSwapper : MonoBehaviour
 {
     // Start is called before the first frame update
     private readonly int inGameIndex = 1;

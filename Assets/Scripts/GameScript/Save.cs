@@ -37,4 +37,8 @@ public static class Save
             return null;
         }
     }
+
+    public static bool isHighScore(){
+        return false;
+    }
 }
