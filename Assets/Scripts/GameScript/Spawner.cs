@@ -6,7 +6,6 @@ public class Spawner : MonoBehaviour
 {
     public float maxDistance;
     public GameObject[] prefabs;
-    float delay = 0f;
     public Player player;
     GameObject planet;
     Vector3 position;

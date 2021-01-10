@@ -81,6 +81,7 @@ public class Player : MonoBehaviour
     }
 
     void lose(){
+        Save.saveScore(score);
         FindObjectOfType<gameState>().gameOverScreen();
     }
 
