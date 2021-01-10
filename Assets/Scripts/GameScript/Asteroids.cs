@@ -18,7 +18,7 @@ public class Asteroids
         Vector3 screen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height,0));
         wOfScreen = screen.x;
 
-        float rangeOfSpawnR = (planet.transform.position.x + (wOfField)/2+ wOfPlayer);
+        float rangeOfSpawnR = (planet.transform.position.x + (wOfField/2) + wOfPlayer);
         float rangeOfSpawnL = (planet.transform.position.x - (wOfField/2) - wOfPlayer);
         float[] spawnRange = new float[] {};
         if ((Mathf.Abs(wOfScreen - rangeOfSpawnR)) > (Mathf.Abs(-1*wOfScreen) + rangeOfSpawnL)){
@@ -30,7 +30,7 @@ public class Asteroids
         }
         
         float MaxlenOfAsteroid = spawnRange[1] - spawnRange[0];
-        lenOfAsteroid = Random.Range(1, MaxlenOfAsteroid) * 2;
+        lenOfAsteroid = Random.Range(MaxlenOfAsteroid*0.75f, MaxlenOfAsteroid);
     }
 
     public float Length{

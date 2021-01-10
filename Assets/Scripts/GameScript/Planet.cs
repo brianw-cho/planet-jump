@@ -19,7 +19,7 @@ public class Planet : MonoBehaviour
     public Asteroids asteroid;
     private List<int> asteroids = new List<int>();
     private GameObject[] asteroids_go;
-    private float[] lenOfAsteroids = new float[] { 2.0f, 1.2f, 1.2f, 1.0f };
+    private float[] lenOfAsteroids = new float[] { 1.5f, 1.2f, 1.2f, 1.0f };
     public Sprite[] planetSprite;
     bool addedScore;
 
@@ -66,9 +66,12 @@ public class Planet : MonoBehaviour
         Vector3 objScreenPos = Camera.main.WorldToScreenPoint(transform.position);
         if (objScreenPos.y < -500)
         {
-            for (int i = 0; i < asteroids_go.Length; i++)
+            if (asteroids.Count > 0)
             {
-                Destroy(asteroids_go[i]);
+                for (int i = 0; i < asteroids_go.Length; i++)
+                {
+                    Destroy(asteroids_go[i]);
+                }
             }
             Destroy(gameObject);
             Destroy(field);
@@ -87,11 +90,14 @@ public class Planet : MonoBehaviour
         transform.position = new Vector3(pos.x, pos.y - speed, pos.z);
         field.transform.position = transform.position;
 
-        for (int i = 0; i < asteroids_go.Length; i++)
+        if (asteroids.Count > 0)
         {
-            var asPos = asteroids_go[i].transform.position;
-            asteroids_go[i].transform.position = new Vector3(asPos.x, asPos.y - speed, asPos.z);
+            for (int i = 0; i < asteroids_go.Length; i++)
+            {
+                var asPos = asteroids_go[i].transform.position;
+                asteroids_go[i].transform.position = new Vector3(asPos.x, asPos.y - speed, asPos.z);
 
+            }
         }
 
         //var asPos = asteroidGObj.transform.position;
@@ -139,6 +145,11 @@ public class Planet : MonoBehaviour
         } while (asteroidLength < asteroid.Length);
 
         asteroids.RemoveAt(asteroids.Count - 1);
+
+        if (asteroids.Count == 0)
+        {
+            return;
+        }
 
         print(asteroids.Count);
 
