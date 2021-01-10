@@ -16,7 +16,10 @@ public class Planet : MonoBehaviour
     GameObject asteroidGObj;
     public GameObject[] prefabs;
 
-    public Asteroids asteroids;
+    public Asteroids asteroid;
+    private List<int> asteroids = new List<int>();
+    private GameObject[] asteroids_go;
+    private float[] lenOfAsteroids = new float[] { 2.0f, 1.2f, 1.2f, 1.0f };
     public Sprite[] planetSprite;
     bool addedScore;
 
@@ -50,10 +53,11 @@ public class Planet : MonoBehaviour
         field.transform.localScale = new Vector3(transform.localScale.x * (1.35F / 0.5F), transform.localScale.y * (1.35F / 0.5F), transform.localScale.z * (1.35F / 0.5F));
 
         Planet planet = gameObject.GetComponent<Planet>();
-        asteroids = new Asteroids(planet);
-        Vector3 location = new Vector3(asteroids.Spawn, transform.position.y, transform.position.z);
-        asteroidGObj = Instantiate(prefabs[1], location, transform.rotation);
-        asteroidGObj.transform.localScale = new Vector3(asteroids.Length, asteroidGObj.transform.localScale.y, asteroidGObj.transform.localScale.z);
+        asteroid = new Asteroids(planet);
+        FitAsteroid(asteroid);
+        //Vector3 location = new Vector3(asteroid.Spawn, transform.position.y, transform.position.z);
+        //asteroidGObj = Instantiate(prefabs[1], location, transform.rotation);
+        //asteroidGObj.transform.localScale = new Vector3(asteroids.Length, asteroidGObj.transform.localScale.y, asteroidGObj.transform.localScale.z);
     }
 
     // Update is called once per frame
@@ -62,6 +66,10 @@ public class Planet : MonoBehaviour
         Vector3 objScreenPos = Camera.main.WorldToScreenPoint(transform.position);
         if (objScreenPos.y < -500)
         {
+            for (int i = 0; i < asteroids_go.Length; i++)
+            {
+                Destroy(asteroids_go[i]);
+            }
             Destroy(gameObject);
             Destroy(field);
         }
@@ -79,8 +87,15 @@ public class Planet : MonoBehaviour
         transform.position = new Vector3(pos.x, pos.y - speed, pos.z);
         field.transform.position = transform.position;
 
-        var asPos = asteroidGObj.transform.position;
-        asteroidGObj.transform.position = new Vector3(asPos.x, asPos.y - speed, asPos.z);
+        for (int i = 0; i < asteroids_go.Length; i++)
+        {
+            var asPos = asteroids_go[i].transform.position;
+            asteroids_go[i].transform.position = new Vector3(asPos.x, asPos.y - speed, asPos.z);
+
+        }
+
+        //var asPos = asteroidGObj.transform.position;
+        //asteroidGObj.transform.position = new Vector3(asPos.x, asPos.y - speed, asPos.z);
     }
 
     private void OnTriggerStay2D(Collider2D touchplayer)
@@ -108,5 +123,59 @@ public class Planet : MonoBehaviour
     public void SetSpeed(float newSpeed)
     {
         speed = newSpeed;
+    }
+
+    void FitAsteroid(Asteroids asteroid)
+    {
+        float asteroidLength = 0;
+        int randomAsteroid;
+
+        print(asteroid.Length);
+        do
+        {
+            randomAsteroid = Random.Range(0, 4);
+            asteroidLength += lenOfAsteroids[randomAsteroid];
+            asteroids.Add(randomAsteroid + 1);
+        } while (asteroidLength < asteroid.Length);
+
+        asteroids.RemoveAt(asteroids.Count - 1);
+
+        print(asteroids.Count);
+
+        float[] posOfAsteroids = new float[asteroids.Count];
+
+        if (asteroid.LeftOrRight() > 0)
+        {
+            posOfAsteroids[0] = (asteroid.ScreenWidth * asteroid.LeftOrRight()) - (lenOfAsteroids[asteroids[0] - 1] / 2);
+        }
+        else
+        {
+            posOfAsteroids[0] = (asteroid.ScreenWidth * asteroid.LeftOrRight()) + (lenOfAsteroids[asteroids[0] - 1]/ 2);
+        }
+
+        print("pass1");
+
+        for (int i = 1; i < asteroids.Count; i++)
+        {
+            if (asteroid.LeftOrRight() > 0) 
+            {
+                posOfAsteroids[i] = posOfAsteroids[i - 1] - (lenOfAsteroids[asteroids[i - 1] - 1] / 2) - (lenOfAsteroids[asteroids[i] - 1] / 2);
+            }
+            else
+            {
+                posOfAsteroids[i] = posOfAsteroids[i - 1] + (lenOfAsteroids[asteroids[i - 1] - 1] / 2) + (lenOfAsteroids[asteroids[i] - 1] / 2);
+            }
+        }
+
+        print("pass2");
+
+        Vector3 location;
+        asteroids_go = new GameObject[asteroids.Count];
+
+        for (int i = 0; i < asteroids.Count; i++)
+        {
+            location = new Vector3(posOfAsteroids[i], transform.position.y, transform.position.z);
+            asteroids_go[i] = Instantiate(prefabs[asteroids[i]], location, transform.rotation);
+        }
     }
 }

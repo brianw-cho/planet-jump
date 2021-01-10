@@ -40,4 +40,21 @@ public class Asteroids
     public float Spawn{
         get{return spawnPoint;}
     }
+
+    public float ScreenWidth
+    {
+        get { return wOfScreen; }
+    }
+
+    public float LeftOrRight()
+    {
+        if (spawnPoint >= 0)
+        {
+            return 1f;
+        }
+        else
+        {
+            return -1f;
+        }
+    }
 }

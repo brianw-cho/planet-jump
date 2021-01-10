@@ -231,7 +231,10 @@ MonoBehaviour:
   gravity: 9.8
   prefabs:
   - {fileID: 1690909971937101183, guid: 84f2da4ac6273b14398e2f5a978c3c1d, type: 3}
-  - {fileID: 1155158660584366662, guid: f142cc3315bff554dbfab0af3f6fbd72, type: 3}
+  - {fileID: 116054578264864323, guid: f420c3ef8a4e94d48b89a11fe119c7eb, type: 3}
+  - {fileID: 3414019169626371272, guid: a01e9a1868a83a24a928c73267871b7e, type: 3}
+  - {fileID: 7440415238139880786, guid: 85d8329ea6196a44ca60530b6e60ded0, type: 3}
+  - {fileID: 5341305399584509735, guid: f6906b07fc6cddd4993faf8de8e5331d, type: 3}
   planetSprite:
   - {fileID: 21300000, guid: 7fd37ac138fced546a89a75d728d0710, type: 3}
   - {fileID: 21300000, guid: 4dc75a220dfadec47be9a6b70272c152, type: 3}
