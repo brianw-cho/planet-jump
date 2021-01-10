@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public int score = 0;
+    int score = 0;
     Vector3 playerPosition {get; set;}
     public int fuel = 100;
     public int maxFuel = 100;
@@ -54,22 +54,20 @@ public class Player : MonoBehaviour
             transform.position = new Vector3(pos.x, pos.y - speed, pos.z);
         } 
 
-        if (Camera.main.WorldToScreenPoint(transform.position).x == Screen.width  || 
-        Camera.main.WorldToScreenPoint(transform.position).x == 0 ||
-        Camera.main.WorldToScreenPoint(transform.position).y == Screen.height ||
-        Camera.main.WorldToScreenPoint(transform.position).y == 0) {
+        if (Camera.main.WorldToScreenPoint(transform.position).x >= Screen.width  || 
+        Camera.main.WorldToScreenPoint(transform.position).x <= 0 ||
+        Camera.main.WorldToScreenPoint(transform.position).y >= Screen.height ||
+        Camera.main.WorldToScreenPoint(transform.position).y <= 0) {
             lose();
         }
         
         scorePrinter.text = score.ToString();
     }
 
-     private void OnTriggerEnter2D (Collider2D touchObj){
+     private void OnTriggerStay2D (Collider2D touchObj){
          if (touchObj.gameObject.name == "Asteroids(Clone)"){
             lose();
-         } else if (touchObj.gameObject.name == "Planet(Clone)"){
-             score+=1;
-         }
+         } 
      }
     public void DecreaseFuel(int amount)
     {
@@ -77,8 +75,13 @@ public class Player : MonoBehaviour
         fuelBar.SetFuel(fuel);
     }
 
+    public int Score{
+        get{ return score; }
+        set{ score = value; }
+    }
+
     void lose(){
-        print("You lose");
+        FindObjectOfType<gameState>().gameOverScreen();
     }
 
     

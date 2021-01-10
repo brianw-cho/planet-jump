@@ -4,33 +4,34 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public float maxDistance;
     public GameObject[] prefabs;
     float delay = 0f;
     public Player player;
+    GameObject planet;
+    Vector3 position;
     void Start()
     {
-        StartCoroutine(ObstacleGenerator());
+        position = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height + 400, 0));
         player = Player.s_Singleton.gameObject.GetComponent<Player>();
-    }
-    IEnumerator ObstacleGenerator()
-    {
-        yield return new WaitForSeconds(delay);
+        spawnPlanet();
 
-        float xPos = Random.Range(-3f, 3f);
-        Vector3 position = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height + 400, 0));
-        position.x = xPos;
-        position.z = 0;
-        Instantiate(prefabs[0], position, Quaternion.identity).GetComponent<Planet>().SetSpeed(player.speed);
-
-        if (delay == 0f)
-        {
-            delay += 10;
-        }
-        StartCoroutine(ObstacleGenerator());
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (position.y - planet.transform.position.y > maxDistance)
+        {
+            spawnPlanet();
+        }
+    }
+
+    void spawnPlanet()
+    {
+        float xPos = Random.Range(-2.5f, 2.5f);
+        position.x = xPos;
+        position.z = 0;
+        planet = Instantiate(prefabs[0], position, Quaternion.identity);
+        planet.GetComponent<Planet>().SetSpeed(player.speed);
     }
 }
