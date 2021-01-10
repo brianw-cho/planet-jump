@@ -5,6 +5,18 @@ EditorUserSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 4
   m_ConfigSettings:
+<<<<<<< Updated upstream
+=======
+    RecentlyUsedScenePath-0:
+      value: 22424703114646680e0b0227036c7215180258192f3a23352367083debf42d
+      flags: 0
+    RecentlyUsedScenePath-1:
+      value: 22424703114646680e0b0227036c6f1c170e11242b66333e243d04
+      flags: 0
+    RecentlyUsedScenePath-2:
+      value: 22424703114646680e0b0227036c7a1e12572b293e2d233e633c133af6f9
+      flags: 0
+>>>>>>> Stashed changes
     UnityRemoteDevice:
       value: 225f4d46245b0d4902070862342649191512
       flags: 0
