@@ -9,20 +9,16 @@ public class menuSwapper : MonoBehaviour
     private readonly int inGameIndex = 1;
     private readonly int inMenuIndex = 0;
     private readonly int inEndIndex = 2;
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    bool gameOver = false;
 
     public void startGame()
     {
         SceneManager.LoadScene(inGameIndex);
+    }
+
+    public void endScreen()
+    {
+        SceneManager.LoadScene(inEndIndex);
     }
 
 

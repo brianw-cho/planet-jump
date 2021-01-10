@@ -7,38 +7,49 @@ public static class Save
 {
     private static BinaryFormatter formatter = new BinaryFormatter();
     private static string path = Application.persistentDataPath + "/score.save";
+
+    static int mostRecentScore;
     public static void saveScore(int score)
     {
-        FileStream stream;
-        if (File.Exists(path))
+        if (isHighScore(score))
         {
-            stream = new FileStream(path, FileMode.Append);
-        }
-        else
-        {
-            stream = new FileStream(path, FileMode.Create);
-        }
+            FileStream stream;
+            if (File.Exists(path))
+            {
+                stream = new FileStream(path, FileMode.Append);
+            }
+            else
+            {
+                stream = new FileStream(path, FileMode.Create);
+            }
 
-        formatter.Serialize(stream, score);
-        stream.Close();
+            formatter.Serialize(stream, score);
+            stream.Close();
+        }
+        mostRecentScore = score;
     }
 
-    public static string readSave()
+    public static int readSave()
     {
         if (File.Exists(path))
         {
             FileStream stream = new FileStream(path, FileMode.Open);
-            string returnV = (string)formatter.Deserialize(stream);
+            int returnV = (int)formatter.Deserialize(stream);
             stream.Close();
             return returnV;
         }
         else
         {
-            return null;
+            return 0;
         }
     }
 
-    public static bool isHighScore(){
-        return false;
+    public static bool isHighScore(int score)
+    {
+        return readSave() < score;
+    }
+
+    public static int getMostRecentScore(){
+        return mostRecentScore;
     }
 }

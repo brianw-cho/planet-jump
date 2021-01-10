@@ -1702,7 +1702,7 @@ GameObject:
   - component: {fileID: 1976459960}
   - component: {fileID: 1976459961}
   m_Layer: 0
-  m_Name: GameState
+  m_Name: MenuSwapper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1731,7 +1731,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1976459959}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 699340c175fc8d1469a4830c5b304023, type: 3}
+  m_Script: {fileID: 11500000, guid: 21500dc5fd6344141b59f259139f51b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2140733456
