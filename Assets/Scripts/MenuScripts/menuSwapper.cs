@@ -9,7 +9,7 @@ public class menuSwapper : MonoBehaviour
     private readonly int inGameIndex = 1;
     private readonly int inMenuIndex = 0;
     private readonly int inEndIndex = 2;
-    bool gameOver = false;
+    public GameObject pauseMenu;
 
     public void startGame()
     {
@@ -21,5 +21,22 @@ public class menuSwapper : MonoBehaviour
         SceneManager.LoadScene(inEndIndex);
     }
 
+    public void menuScreen(){
+        SceneManager.LoadScene(inMenuIndex);
+    }
+
+    
+
+
+
+    public void pause(){
+        pauseMenu.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void resume(){
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
 
 }

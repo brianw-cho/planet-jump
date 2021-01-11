@@ -53,3 +53,6 @@ TagManager:
   - name: UI
     uniqueID: 2677665411
     locked: 0
+  - name: Pause Screen UI
+    uniqueID: 442786039
+    locked: 0
