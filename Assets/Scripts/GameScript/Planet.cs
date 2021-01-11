@@ -136,7 +136,6 @@ public class Planet : MonoBehaviour
         float asteroidLength = 0;
         int randomAsteroid;
 
-        print(asteroid.Length);
         do
         {
             randomAsteroid = Random.Range(0, 4);
@@ -151,7 +150,6 @@ public class Planet : MonoBehaviour
             return;
         }
 
-        print(asteroids.Count);
 
         float[] posOfAsteroids = new float[asteroids.Count];
 
@@ -164,7 +162,6 @@ public class Planet : MonoBehaviour
             posOfAsteroids[0] = (asteroid.ScreenWidth * asteroid.LeftOrRight()) + (lenOfAsteroids[asteroids[0] - 1]/ 2);
         }
 
-        print("pass1");
 
         for (int i = 1; i < asteroids.Count; i++)
         {
@@ -178,7 +175,6 @@ public class Planet : MonoBehaviour
             }
         }
 
-        print("pass2");
 
         Vector3 location;
         asteroids_go = new GameObject[asteroids.Count];

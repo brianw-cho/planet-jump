@@ -3,8 +3,8 @@
     "m_SelectedPackage": {
         "deviceId": "3342574b55483098",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 4739,
-        "exited": true
+        "processId": 22745,
+        "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
@@ -67,6 +67,12 @@
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 4739,
             "exited": true
+        },
+        {
+            "deviceId": "3342574b55483098",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 22745,
+            "exited": false
         },
         {
             "deviceId": "57534a5932383498",

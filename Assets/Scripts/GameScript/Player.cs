@@ -64,7 +64,15 @@ public class Player : MonoBehaviour
         scorePrinter.text = score.ToString();
     }
 
-     private void OnTriggerStay2D (Collider2D touchObj){
+    private void OnTriggerEnter2D (Collider2D touchObj)
+    {
+        if (touchObj.gameObject.name == "Planet Child")
+        {
+            print(GetPlanetDirection(touchObj.gameObject));
+        }
+    }
+
+    private void OnTriggerStay2D (Collider2D touchObj){
          if (touchObj.gameObject.name == "Asteroids(Clone)"){
             lose();
          } 
@@ -86,5 +94,14 @@ public class Player : MonoBehaviour
 
     }
 
-    
+    float GetPlanetDirection (GameObject planet)
+    {
+        Vector3 toPlanet = new Vector3(planet.transform.position.x - transform.position.x, planet.transform.position.y - transform.position.y, 0);
+        float angle = Vector3.Angle(new Vector3(0.0f, 1.0f, 0.0f), toPlanet);
+        if (toPlanet.x < 0.0f)
+        {
+            angle = 360f - angle;
+        }
+        return angle;
+    }
 }
