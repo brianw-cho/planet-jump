@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    int score = 0;
+    private int score = 0;
+    private static int mostRecentScore;
     Vector3 playerPosition {get; set;}
     public int fuel = 100;
     public int maxFuel = 100;
@@ -88,8 +89,14 @@ public class Player : MonoBehaviour
         set{ score = value; }
     }
 
+    public static int RecentScore{
+        get{ return mostRecentScore;}
+    }
+
     void lose(){
-        Save.saveScore(score);
+        if (PlayerPrefs.GetInt("Highscore") > score){
+            PlayerPrefs.SetInt("Highscore", score);
+        }
         FindObjectOfType<menuSwapper>().endScreen();
 
     }

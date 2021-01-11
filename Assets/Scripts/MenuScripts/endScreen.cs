@@ -14,8 +14,8 @@ public class endScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int highScore = Save.readSave();
-        int recentScore = Save.getMostRecentScore();
+        int highScore = PlayerPrefs.GetInt("Highscore");
+        int recentScore = Player.RecentScore;
 
         if (gameObject.name == "Score Text")
         {
