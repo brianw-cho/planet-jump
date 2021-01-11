@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     static public Player s_Singleton;
     public FuelBar fuelBar;
     public Text scorePrinter;
+
     void Awake()
     {
         s_Singleton = this;
@@ -94,9 +95,10 @@ public class Player : MonoBehaviour
     }
 
     void lose(){
-        if (PlayerPrefs.GetInt("Highscore") > score){
+        if (PlayerPrefs.GetInt("Highscore") < score){
             PlayerPrefs.SetInt("Highscore", score);
         }
+        mostRecentScore = score;
         FindObjectOfType<menuSwapper>().endScreen();
 
     }
