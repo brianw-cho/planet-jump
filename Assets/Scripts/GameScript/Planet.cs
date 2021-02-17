@@ -21,7 +21,6 @@ public class Planet : MonoBehaviour
     private GameObject[] asteroids_go;
     private float[] lenOfAsteroids = new float[] { 1.5f, 1.2f, 1.2f, 1.0f };
     public Sprite[] planetSprite;
-    bool addedScore;
 
 
     public GameObject Field
@@ -32,7 +31,6 @@ public class Planet : MonoBehaviour
 
     void Awake()
     {
-        addedScore = false;
         player = Player.s_Singleton.gameObject.transform;
         int planetSpriteRandomizer = Random.Range(0, planetSprite.Length);
         GetComponent<SpriteRenderer>().sprite = planetSprite[planetSpriteRandomizer];
@@ -111,10 +109,6 @@ public class Planet : MonoBehaviour
             if (!gameObject.GetComponentInChildren<PlanetChild>().isChild)
             {
                 player.GetComponent<Rigidbody2D>().AddForce(directionofPlayer * gravity);
-                if (!addedScore){
-                    player.transform.GetComponent<Player>().Score +=1;
-                    addedScore = true;
-                }
             }
         }
 

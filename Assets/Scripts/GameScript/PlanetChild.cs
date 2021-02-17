@@ -10,10 +10,11 @@ public class PlanetChild : MonoBehaviour
     public bool isChild { get; set; } = false;
     public bool refueled = false;
     public float fuelScale;
+    bool addedScore;
 
     void Awake()
     {
-
+        addedScore = false;
     }
 
     // Start is called before the first frame update
@@ -41,6 +42,10 @@ public class PlanetChild : MonoBehaviour
             {
                 player.GetComponent<Player>().fuel += (int)(planet.GetComponent<Planet>().Field.transform.localScale.x * fuelScale);
                 refueled = true;
+                if (!addedScore){
+                    player.transform.GetComponent<Player>().Score +=1;
+                    addedScore = true;
+                }
             }
         }
     }

@@ -75,8 +75,9 @@ public class Player : MonoBehaviour
     }
 
     private void OnTriggerStay2D (Collider2D touchObj){
-         if (touchObj.gameObject.name == "Asteroids(Clone)"){
-            lose();
+         if (touchObj.gameObject.name.Contains("methorite")){
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            Invoke("lose", 1f);
          } 
      }
     public void DecreaseFuel(int amount)
