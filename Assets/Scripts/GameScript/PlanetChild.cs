@@ -34,6 +34,10 @@ public class PlanetChild : MonoBehaviour
     {
         if (touchplayer.gameObject.name == "Player")
         {
+            foreach (AudioSource aS in GameObject.FindObjectsOfType<AudioSource>())
+                    {
+                        if(aS.name == "Sound" ) aS.GetComponent<Audio>().playAudioClip(0,1f);
+                    }
             isChild = true;
             player.GetComponent<Player>().onPlanet = true;
             player.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
@@ -43,6 +47,10 @@ public class PlanetChild : MonoBehaviour
                 player.GetComponent<Player>().fuel += (int)(planet.GetComponent<Planet>().Field.transform.localScale.x * fuelScale);
                 refueled = true;
                 if (!addedScore){
+                    foreach (AudioSource aS in GameObject.FindObjectsOfType<AudioSource>())
+                    {
+                        if(aS.name == "Sound" ) aS.GetComponent<Audio>().playAudioClip(4,1f);
+                    }
                     player.transform.GetComponent<Player>().Score +=1;
                     addedScore = true;
                 }

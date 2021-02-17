@@ -13,15 +13,18 @@ public class menuSwapper : MonoBehaviour
 
     public void startGame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(inGameIndex);
     }
 
     public void endScreen()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(inEndIndex);
     }
 
     public void menuScreen(){
+        Time.timeScale = 1f;
         SceneManager.LoadScene(inMenuIndex);
     }
 

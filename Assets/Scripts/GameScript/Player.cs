@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     private int score = 0;
     private static int mostRecentScore;
-    Vector3 playerPosition {get; set;}
+    Vector3 playerPosition { get; set; }
     public int fuel = 100;
     public int maxFuel = 100;
     public float fuelScale;
@@ -49,24 +49,26 @@ public class Player : MonoBehaviour
         }
     }
 
-    void FixedUpdate(){
+    void FixedUpdate()
+    {
         if (!onPlanet)
         {
             var pos = transform.position;
             transform.position = new Vector3(pos.x, pos.y - speed, pos.z);
-        } 
+        }
 
-        if (Camera.main.WorldToScreenPoint(transform.position).x >= Screen.width  || 
+        if (Camera.main.WorldToScreenPoint(transform.position).x >= Screen.width ||
         Camera.main.WorldToScreenPoint(transform.position).x <= 0 ||
         Camera.main.WorldToScreenPoint(transform.position).y >= Screen.height ||
-        Camera.main.WorldToScreenPoint(transform.position).y <= 0) {
+        Camera.main.WorldToScreenPoint(transform.position).y <= 0)
+        {
             lose();
         }
-        
+
         scorePrinter.text = score.ToString();
     }
 
-    private void OnTriggerEnter2D (Collider2D touchObj)
+    private void OnTriggerEnter2D(Collider2D touchObj)
     {
         if (touchObj.gameObject.name == "Planet Child")
         {
@@ -74,29 +76,47 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D (Collider2D touchObj){
-         if (touchObj.gameObject.name.Contains("methorite")){
+    private void OnTriggerStay2D(Collider2D touchObj)
+    {
+        if (touchObj.gameObject.name.Contains("methorite"))
+        {
+            foreach (AudioSource aS in GameObject.FindObjectsOfType<AudioSource>())
+                    {
+                        if(aS.name == "Sound" ) aS.GetComponent<Audio>().playAudioClip(1,1f);
+                    }
             gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            Invoke("lose", 1f);
-         } 
-     }
+            Invoke("lose", 0.5f);
+        }
+    }
     public void DecreaseFuel(int amount)
     {
+        foreach (AudioSource aS in GameObject.FindObjectsOfType<AudioSource>())
+                    {
+                        if(aS.name == "Sound" ) aS.GetComponent<Audio>().playAudioClip(2,1f);
+                    }
         fuel = fuel - (int)(amount * fuelScale);
         fuelBar.SetFuel(fuel);
     }
 
-    public int Score{
-        get{ return score; }
-        set{ score = value; }
+    public int Score
+    {
+        get { return score; }
+        set { score = value; }
     }
 
-    public static int RecentScore{
-        get{ return mostRecentScore;}
+    public static int RecentScore
+    {
+        get { return mostRecentScore; }
     }
 
-    void lose(){
-        if (PlayerPrefs.GetInt("Highscore") < score){
+    void lose()
+    {
+        foreach (AudioSource aS in GameObject.FindObjectsOfType<AudioSource>())
+        {
+            if (aS.name == "Sound") aS.GetComponent<Audio>().playAudioClip(3, 1f);
+        }
+        if (PlayerPrefs.GetInt("Highscore") < score)
+        {
             PlayerPrefs.SetInt("Highscore", score);
         }
         mostRecentScore = score;
@@ -104,7 +124,7 @@ public class Player : MonoBehaviour
 
     }
 
-    float GetPlanetDirection (GameObject planet)
+    float GetPlanetDirection(GameObject planet)
     {
         Vector3 toPlanet = new Vector3(planet.transform.position.x - transform.position.x, planet.transform.position.y - transform.position.y, 0);
         float angle = Vector3.Angle(new Vector3(0.0f, 1.0f, 0.0f), toPlanet);
