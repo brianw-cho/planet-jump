@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     static public Player s_Singleton;
     public FuelBar fuelBar;
     public Text scorePrinter;
+    public ParticleSystem death;
+    public ParticleSystem land;
 
     void Awake()
     {
@@ -38,12 +40,12 @@ public class Player : MonoBehaviour
             fuel = maxFuel;
         }
 
-        if (score % 20 == 0 && score != 0 && !speedInc)
+        if (score % 4 == 0 && score != 0 && !speedInc)
         {
             speed = speed * 1.5f;
             speedInc = true;
         }
-        else if (score % 20 != 0 && speedInc)
+        else if (score % 4 != 0 && speedInc)
         {
             speedInc = false;
         }
@@ -76,24 +78,31 @@ public class Player : MonoBehaviour
         }
     }
 
+    int playLose = 1;
     private void OnTriggerStay2D(Collider2D touchObj)
     {
         if (touchObj.gameObject.name.Contains("methorite"))
         {
             foreach (AudioSource aS in GameObject.FindObjectsOfType<AudioSource>())
-                    {
-                        if(aS.name == "Sound" ) aS.GetComponent<Audio>().playAudioClip(1,1f);
-                    }
+            {
+                if (aS.name == "Sound") aS.GetComponent<Audio>().playAudioClip(1, 1f);
+            }
             gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             Invoke("lose", 0.5f);
+            if (playLose > 0)
+            {
+                Instantiate(death, transform.position, transform.rotation);
+                playLose--;
+            }
+            transform.position = new Vector3(transform.position.x, transform.position.y, -111);
         }
     }
     public void DecreaseFuel(int amount)
     {
         foreach (AudioSource aS in GameObject.FindObjectsOfType<AudioSource>())
-                    {
-                        if(aS.name == "Sound" ) aS.GetComponent<Audio>().playAudioClip(2,1f);
-                    }
+        {
+            if (aS.name == "Sound") aS.GetComponent<Audio>().playAudioClip(2, 1f);
+        }
         fuel = fuel - (int)(amount * fuelScale);
         fuelBar.SetFuel(fuel);
     }

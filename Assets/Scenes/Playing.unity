@@ -500,6 +500,7 @@ MonoBehaviour:
   onPlanet: 0
   fuelBar: {fileID: 1745173292}
   scorePrinter: {fileID: 514222170}
+  death: {fileID: 5935396230890102282, guid: dbfb201a75fa7fb4b9830819a0150f09, type: 3}
 --- !u!114 &204705504
 MonoBehaviour:
   m_ObjectHideFlags: 0

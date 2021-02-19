@@ -15,8 +15,8 @@ public class SwipeAcceleration : MonoBehaviour
     private Vector2 transLastPos;
     private Vector2 force;
     public float scale;
-
     public GameObject[] prefabs;
+    public ParticleSystem launch;
     private GameObject dottedLine;
     private Camera cam;
 
@@ -28,42 +28,44 @@ public class SwipeAcceleration : MonoBehaviour
         cam = Camera.main;
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         dottedLine = Instantiate(prefabs[0]);
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (gameObject.GetComponent<Player>().fuel > 0)
         {
-            Touch touch = Input.GetTouch(0);
-
-            switch (touch.phase)
+            if (Input.touchCount > 0)
             {
-                case TouchPhase.Began:
-                    firstPosition = touch.position;
-                    firstPosition_w = cam.ScreenToWorldPoint(firstPosition);
-                    gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                    break;
+                Touch touch = Input.GetTouch(0);
 
-                case TouchPhase.Moved:
-                    swiping = true;
-                    tempPosition = touch.position;
-                    tempPosition_w = cam.ScreenToWorldPoint(tempPosition);
-                    transLastPos = translateVector(tempPosition_w);
-                    break;
+                switch (touch.phase)
+                {
+                    case TouchPhase.Began:
+                        firstPosition = touch.position;
+                        firstPosition_w = cam.ScreenToWorldPoint(firstPosition);
+                        gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                        break;
 
-                case TouchPhase.Ended:
-                    if (swiping)
-                    {
-                        lastPosition = touch.position;
-                        swiping = false;
-                        eventsent = false;
-                    }
-                    break;
+                    case TouchPhase.Moved:
+                        swiping = true;
+                        tempPosition = touch.position;
+                        tempPosition_w = cam.ScreenToWorldPoint(tempPosition);
+                        transLastPos = translateVector(tempPosition_w);
+                        break;
+
+                    case TouchPhase.Ended:
+                        if (swiping)
+                        {
+                            lastPosition = touch.position;
+                            swiping = false;
+                            eventsent = false;
+                        }
+                        break;
+                }
             }
         }
-
         if (swiping)
         {
             dottedLine.GetComponent<DottedLine>().DrawDottedLine(gameObject.transform.position, transLastPos);
@@ -77,6 +79,7 @@ public class SwipeAcceleration : MonoBehaviour
             if (force.sqrMagnitude != 0)
             {
                 rb2D.AddForce(force * scale);
+                Instantiate(launch, transform.position, transform.rotation);
                 force = Vector2.zero;
             }
             eventsent = true;

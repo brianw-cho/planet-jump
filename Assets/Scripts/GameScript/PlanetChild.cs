@@ -7,6 +7,7 @@ public class PlanetChild : MonoBehaviour
     public Transform player;
     public Transform planet;
     private Collider2D touchPlayer;
+    Vector3 landPoint;
     public bool isChild { get; set; } = false;
     public bool refueled = false;
     public float fuelScale;
@@ -25,19 +26,16 @@ public class PlanetChild : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter2D(Collider2D touchplayer)
     {
         if (touchplayer.gameObject.name == "Player")
         {
             foreach (AudioSource aS in GameObject.FindObjectsOfType<AudioSource>())
-                    {
-                        if(aS.name == "Sound" ) aS.GetComponent<Audio>().playAudioClip(0,1f);
-                    }
+            {
+                if (aS.name == "Sound") aS.GetComponent<Audio>().playAudioClip(0, 1f);
+            }
+            //landPoint = new Vector3()
+            Instantiate(touchplayer.GetComponent<Player>().land,touchplayer.gameObject.GetComponent<CircleCollider2D>().ClosestPoint(transform.position), transform.rotation);
             isChild = true;
             player.GetComponent<Player>().onPlanet = true;
             player.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
@@ -46,12 +44,13 @@ public class PlanetChild : MonoBehaviour
             {
                 player.GetComponent<Player>().fuel += (int)(planet.GetComponent<Planet>().Field.transform.localScale.x * fuelScale);
                 refueled = true;
-                if (!addedScore){
+                if (!addedScore)
+                {
                     foreach (AudioSource aS in GameObject.FindObjectsOfType<AudioSource>())
                     {
-                        if(aS.name == "Sound" ) aS.GetComponent<Audio>().playAudioClip(4,1f);
+                        if (aS.name == "Sound") aS.GetComponent<Audio>().playAudioClip(4, 1f);
                     }
-                    player.transform.GetComponent<Player>().Score +=1;
+                    player.transform.GetComponent<Player>().Score += 1;
                     addedScore = true;
                 }
             }
