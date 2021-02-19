@@ -501,6 +501,7 @@ MonoBehaviour:
   fuelBar: {fileID: 1745173292}
   scorePrinter: {fileID: 514222170}
   death: {fileID: 5935396230890102282, guid: dbfb201a75fa7fb4b9830819a0150f09, type: 3}
+  land: {fileID: 3275713402392101229, guid: a5b7444c4f2bb5448ac7aa94e1174e19, type: 3}
 --- !u!114 &204705504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,6 +517,7 @@ MonoBehaviour:
   scale: 0.5
   prefabs:
   - {fileID: 9095924625013717308, guid: cca7ccba4938ae4428dbbf63c5210ee7, type: 3}
+  launch: {fileID: 72732597438339047, guid: 795bf1be218c392428f1fe1e9c4d6008, type: 3}
 --- !u!50 &204705505
 Rigidbody2D:
   serializedVersion: 4

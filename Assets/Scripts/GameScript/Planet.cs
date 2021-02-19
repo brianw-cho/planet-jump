@@ -53,9 +53,6 @@ public class Planet : MonoBehaviour
         Planet planet = gameObject.GetComponent<Planet>();
         asteroid = new Asteroids(planet);
         FitAsteroid(asteroid);
-        //Vector3 location = new Vector3(asteroid.Spawn, transform.position.y, transform.position.z);
-        //asteroidGObj = Instantiate(prefabs[1], location, transform.rotation);
-        //asteroidGObj.transform.localScale = new Vector3(asteroids.Length, asteroidGObj.transform.localScale.y, asteroidGObj.transform.localScale.z);
     }
 
     // Update is called once per frame
@@ -94,12 +91,8 @@ public class Planet : MonoBehaviour
             {
                 var asPos = asteroids_go[i].transform.position;
                 asteroids_go[i].transform.position = new Vector3(asPos.x, asPos.y - speed, asPos.z);
-
             }
         }
-
-        //var asPos = asteroidGObj.transform.position;
-        //asteroidGObj.transform.position = new Vector3(asPos.x, asPos.y - speed, asPos.z);
     }
 
     private void OnTriggerStay2D(Collider2D touchplayer)
