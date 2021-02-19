@@ -25,17 +25,21 @@ public class PlanetChild : MonoBehaviour
         planet = gameObject.transform.parent;
     }
 
+
+
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D touchplayer)
     {
         if (touchplayer.gameObject.name == "Player")
         {
-            foreach (AudioSource aS in GameObject.FindObjectsOfType<AudioSource>())
+            if (touchplayer.GetComponent<Rigidbody2D>().velocity.sqrMagnitude > new Vector3(1, 1, 1).sqrMagnitude)
             {
-                if (aS.name == "Sound") aS.GetComponent<Audio>().playAudioClip(0, 1f);
+                foreach (AudioSource aS in GameObject.FindObjectsOfType<AudioSource>())
+                {
+                    if (aS.name == "Sound") aS.GetComponent<Audio>().playAudioClip(0, 1f);
+                }
+                Instantiate(touchplayer.GetComponent<Player>().land, touchplayer.gameObject.GetComponent<CircleCollider2D>().ClosestPoint(transform.position), transform.rotation);
             }
-            //landPoint = new Vector3()
-            Instantiate(touchplayer.GetComponent<Player>().land,touchplayer.gameObject.GetComponent<CircleCollider2D>().ClosestPoint(transform.position), transform.rotation);
             isChild = true;
             player.GetComponent<Player>().onPlanet = true;
             player.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
