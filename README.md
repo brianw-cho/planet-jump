@@ -1,8 +1,22 @@
-# Planet Jump
-Mobile game developed by Valareza Arezehgar and Brian Cho
+# 🌌 Planet Jump
 
-## About
-Planet Jump is a 2D mobile game developed through Unity. The main objective of the game is to stay alive without depleting fuel by refueling when necessary and efficiently using fuel to move across different planets. Each planets have gravity that requires some amount of fuel to escape. Bigger planet will have a stronger gravitational pull compared to smaller planets. 
+*A 2D mobile game developed by **Valareza Arezeghar** and **Brian Cho***  
+Built with **Unity**, powered by gravity, and fueled by strategy.
 
-## Installation and Usage
-Install the app from the Google Play Store: https://play.google.com/store/apps/details?id=com.BrianVala.com.unity.template.mobile2D&pli=1
+## 🚀 About the Game
+
+**Planet Jump** challenges players to navigate across planets using limited fuel reserves.  
+The goal is simple: **stay alive** by refueling smartly and timing your jumps across a system of gravitational bodies.
+
+Each planet exerts a different gravitational pull—**larger planets** demand **more fuel** to escape, while **smaller ones** offer a lighter touch.  
+Strategic planning and quick reflexes are key to surviving the cosmic chaos.
+
+## 📲 Installation
+
+> ⚠️ Planet Jump is no longer available on the Google Play Store.
+
+However, you can still explore its gameplay and mechanics through the demo below.
+
+## 🎮 Gameplay Demo
+
+![Planet Jump Demo](planetfixed.gif)
