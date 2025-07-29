@@ -19,4 +19,4 @@ However, you can still explore its gameplay and mechanics through the demo below
 
 ## 🎮 Gameplay Demo
 
-<img src="planetfixed.gif" alt="Planet Jump Demo" width="400"/>
+![Planet Jump gameplay demo](planetfixed.gif)
