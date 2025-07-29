@@ -18,5 +18,4 @@ Strategic planning and quick reflexes are key to surviving the cosmic chaos.
 However, you can still explore its gameplay and mechanics through the demo below.
 
 ## 🎮 Gameplay Demo
-
-![Planet Jump gameplay demo](planetfixed.gif)
+<img src="planetfixed.gif" alt="Animated gameplay demo of Planet Jump showing movement and UI" width="400">
